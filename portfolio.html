@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Kannada Content Creator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <script>tailwind.config = { theme: { extend: { fontFamily: { inter: ['Inter', 'sans-serif'] } } } }</script>
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        body { background: #0a0a0a; color: #f5f5f4; }
+        ::selection { background: #7f1d1d; color: #fff; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+        @keyframes reveal { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-reveal { animation: reveal 0.8s cubic-bezier(0.16,1,0.3,1) forwards; opacity: 0; }
+        .delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.2s; } .delay-3 { animation-delay: 0.3s; } .delay-4 { animation-delay: 0.4s; }
+        .nav-link { position: relative; }
+        .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #ef4444; transition: width 0.3s ease; }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .gradient-text { background: linear-gradient(135deg, #ef4444, #f87171); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .filter-btn { transition: all 0.2s ease; }
+        .filter-btn.active { background: #ef4444; color: white; border-color: #ef4444; }
+        .portfolio-item { transition: all 0.3s ease; }
+        .portfolio-item:hover { transform: translateY(-4px); }
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+        .portfolio-item:hover .portfolio-img { transform: scale(1.05); }
+        .portfolio-overlay { opacity: 0; transition: opacity 0.3s ease; }
+        .portfolio-img { transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94); }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 h-16 flex items-center px-6 backdrop-blur-xl bg-[#0a0a0a]/80 border-b border-white/5">
+        <div class="max-w-7xl mx-auto w-full flex items-center justify-between">
+            <a href="index.html" class="text-xl font-bold tracking-tight"><span class="gradient-text">Kannada</span>Creator</a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="nav-link text-xs font-semibold tracking-widest uppercase text-stone-400 hover:text-white transition-colors">Home</a>
+                <a href="services.html" class="nav-link text-xs font-semibold tracking-widest uppercase text-stone-400 hover:text-white transition-colors">Services</a>
+                <a href="courses.html" class="nav-link text-xs font-semibold tracking-widest uppercase text-stone-400 hover:text-white transition-colors">Courses</a>
+                <a href="shopping.html" class="nav-link text-xs font-semibold tracking-widest uppercase text-stone-400 hover:text-white transition-colors">Shop</a>
+                <a href="portfolio.html" class="nav-link active text-xs font-semibold tracking-widest uppercase text-stone-300 hover:text-white transition-colors">Portfolio</a>
+                <a href="contact.html" class="nav-link text-xs font-semibold tracking-widest uppercase text-stone-400 hover:text-white transition-colors">Contact</a>
+            </div>
+            <button id="menuBtn" class="md:hidden text-stone-300"><span class="iconify" data-icon="lucide:menu" data-width="24"></span></button>
+        </div>
+    </nav>
+
+    <div id="mobileMenu" class="fixed inset-0 z-40 bg-[#0a0a0a]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-6 hidden">
+        <button id="closeMenu" class="absolute top-5 right-6 text-stone-300"><span class="iconify" data-icon="lucide:x" data-width="24"></span></button>
+        <a href="index.html" class="text-lg font-semibold text-stone-400 hover:text-white transition">Home</a>
+        <a href="services.html" class="text-lg font-semibold text-stone-400 hover:text-white transition">Services</a>
+        <a href="courses.html" class="text-lg font-semibold text-stone-400 hover:text-white transition">Courses</a>
+        <a href="shopping.html" class="text-lg font-semibold text-stone-400 hover:text-white transition">Shop</a>
+        <a href="portfolio.html" class="text-lg font-semibold text-white">Portfolio</a>
+        <a href="contact.html" class="text-lg font-semibold text-stone-400 hover:text-white transition">Contact</a>
+    </div>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-16 px-6">
+        <div class="max-w-7xl mx-auto">
+            <span class="animate-reveal delay-1 text-xs font-semibold tracking-widest uppercase text-red-500 mb-4 block">My Work</span>
+            <h1 class="animate-reveal delay-2 text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[0.9] mb-6">
+                <span class="gradient-text">Portfolio</span>
+            </h1>
+            <p class="animate-reveal delay-3 text-lg font-light text-stone-400 max-w-2xl leading-relaxed">
+                A curated collection of my best work across healthcare, technology, YouTube, brand collaborations, and web development.
+            </p>
+        </div>
+    </section>
+
+    <!-- Filter Buttons -->
+    <section class="px-6 pb-8">
+        <div class="max-w-7xl mx-auto flex flex-wrap gap-3">
+            <button class="filter-btn active px-5 py-2.5 rounded-sm border border-white/10 text-xs font-bold tracking-widest uppercase" data-filter="all">All</button>
+            <button class="filter-btn px-5 py-2.5 rounded-sm border border-white/10 text-xs font-bold tracking-widest uppercase text-stone-400 hover:text-white hover:border-white/20" data-filter="healthcare">Healthcare</button>
+            <button class="filter-btn px-5 py-2.5 rounded-sm border border-white/10 text-xs font-bold tracking-widest uppercase text-stone-400 hover:text-white hover:border-white/20" data-filter="youtube">YouTube</button>
+            <button class="filter-btn px-5 py-2.5 rounded-sm border border-white/10 text-xs font-bold tracking-widest uppercase text-stone-400 hover:text-white hover:border-white/20" data-filter="website">Website</button>
+            <button class="filter-btn px-5 py-2.5 rounded-sm border border-white/10 text-xs font-bold tracking-widest uppercase text-stone-400 hover:text-white hover:border-white/20" data-filter="brand">Brand Collab</button>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="py-8 px-6 pb-24">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolioGrid">
+
+            <!-- Healthcare 1 -->
+            <div class="portfolio-item rounded-2xl overflow-hidden relative group cursor-pointer" data-category="healthcare">
+                <div class="overflow-hidden h-72">
+                    <img src="https://picsum.photos/seed/health1/500/400.jpg" alt="Healthcare Content" class="portfolio-img w-full h-full object-cover opacity-80">
+                </div>
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
+                    <span class="px-2 py-1 rounded bg-red-500/20 text-red-400 text-[10px] font-bold tracking-widest uppercase w-fit mb-2">Healthcare</span>
+                    <h3 class="text-lg font-semibold mb-1">Diabetes Awareness Series</h3>
+                    <p class="text-sm text-stone-400">10-part Kannada series on diabetes prevention — 2M+ total views</p>
+                </div>
+            </div>
+
+            <!-- YouTube 1 -->
+            <div class="portfolio-item rounded-2xl overflow-hidden relative group cursor-pointer" data-category="youtube">
+                <div class="overflow-hidden h-72">
+                    <img src="https://picsum.photos/seed/yt1/500/400.jpg" alt="YouTube Video" class="portfolio-img w-full h-full object-cover opacity-80">
+                </div>
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
+                    <span class="px-2 py-1 rounded bg-red-500/20 text-red-400 text-[10px] font-bold tracking-widest uppercase w-fit mb-2">YouTube</span>
+                    <h3 class="text-lg font-semibold mb-1">Tech Review: Best Budget Phones</h3>
+                    <p class="text-sm text-stone-400">Kannada tech review — 500K+ views in 48 hours</p>
+                </div>
+            </div>
+
+            <!-- Brand Collab 1 -->
+            <div class="portfolio-item rounded-2xl overflow-hidden relative group cursor-pointer" data-category="brand">
+                <div class="overflow-hidden h-72">
+                    <img src="https://picsum.photos/seed/brand1/500/400.jpg" alt="Brand Collab" class="portfolio-img w-full h-full object-cover opacity-80">
+                </div>
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
+                    <span class="px-2 py-1 rounded bg-red-500/20 text-red-400 text-[10px] font-bold tracking-widest uppercase w-fit mb-2">Brand Collab</span>
+                    <h3 class="text-lg font-semibold mb-1">Health Supplement Brand Reel</h3>
+                    <p class="text-sm text-stone-400">Organic India collaboration — 800K+ reach, 12% engagement</p>
+                </div>
+            </div>
+
+            <!-- Healthcare 2 -->
+            <div class="portfolio-item rounded-2xl overflow-hidden relative group cursor-pointer" data-category="healthcare">
+                <div class="overflow-hidden h-72">
+                    <img src="https://picsum.photos/seed/health2/500/400.jpg" alt="Healthcare Content" class="portfolio-img w-full h-full object-cover opacity-80">
+                </div>
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
+                    <span class="px-2 py-1 rounded bg-red-500/20 text-red-400 text-[10px] font-bold tracking-widest uppercase w-fit mb-2">Healthcare</span>
+                    <h3 class="text-lg font-semibold mb-1">Hospital Brand Documentary</h3>
+                    <p class="text-sm text-stone-400">Full documentary for a Bangalore hospital — brand awareness campaign</p>
+                </div>
+            </div>
+
+            <!-- Website 1 -->
+            <div class="portfolio-item rounded-2xl overflow-hidden relative group cursor-pointer" data-category="website">
+                <div class="overflow-hidden h-72">
+                    <img src="https://picsum.photos/seed/web1/500/400.jpg" alt="Website" class="portfolio-img w-full h-full object-cover opacity-80">
+                </div>
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
+                    <span class="px-2 py-1 rounded bg-red-500/20 text-red-400 text-[10px] font-bold tracking-widest uppercase w-fit mb-2">Website</span>
+                    <h3 class="text-lg font-semibold mb-1">Clinic Website - Dr. Kumar</h3>
+                    <p class="text-sm text-stone-400">Responsive medical website with appointment booking system</p>
+                </div>
+            </div>
+
+            <!-- YouTube 2 -->
+            <div class="portfolio-item rounded-2xl overflow-hidden relative group cursor-pointer" data-category="youtube">
+                <div class="overflow-hidden h-72">
+                    <img src="https://picsum.photos/seed/yt2/500/400.jpg" alt="YouTube Video" class="portfolio-img w-full h-full object-cover opacity-80">
+                </div>
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
+                    <span class="px-2 py-1 rounded bg-red-500/20 text-red-400 text-[10px] font-bold tracking-widest uppercase w-fit mb-2">YouTube</span>
+                    <h3 class="text-lg font-semibold mb-1">AI Tools for Kannada Creators</h3>
+                    <p class="text-sm text-stone-400">Explainer video on AI tools — 1M+ views, trending #2 in India</p>
+                </div>
+            </div>
+
+            <!-- Brand Collab 2 -->
+            <div class="portfolio-item rounded-2xl overflow-hidden relative group cursor-pointer" data-category="brand">
+                <div class="overflow-hidden h-72">
+                    <img src="https://picsum.photos/seed/brand2/500/400.jpg" alt="Brand Collab" class="portfolio-img w-full h-full object-cover opacity-80">
+                </div>
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
+                    <span class="px-2 py-1 rounded bg-red-500/20 text-red-400 text-[10px] font-bold tracking-widest uppercase w-fit mb-2">Brand Collab</span>
+                    <h3 class="text-lg font-semibold mb-1">Tech Gadget Launch Reels</h3>
+                    <p class="text-sm text-stone-400">3-reel series for a tech brand launch — 1.5M+ cumulative reach</p>
+                </div>
+            </div>
+
+            <!-- Website 2 -->
+            <div class="portfolio-item rounded-2xl overflow-hidden relative group cursor-pointer" data-category="website">
+                <div class="overflow-hidden h-72">
+                    <img src="https://picsum.photos/seed/web2/500/400.jpg" alt="Website" class="portfolio-img w-full h-full object-cover opacity-80">
+                </div>
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
+                    <span class="px-2 py-1 rounded bg-red-500/20 text-red-400 text-[10px] font-bold tracking-widest uppercase w-fit mb-2">Website</span>
+                    <h3 class="text-lg font-semibold mb-1">Fitness Coach Landing Page</h3>
+                    <p class="text-sm text-stone-400">High-converting landing page for a Kannada fitness influencer</p>
+                </div>
+            </div>
+
+            <!-- Healthcare 3 -->
+            <div class="portfolio-item rounded-2xl overflow-hidden relative group cursor-pointer" data-category="healthcare">
+                <div class="overflow-hidden h-72">
+                    <img src="https://picsum.photos/seed/health3/500/400.jpg" alt="Healthcare Content" class="portfolio-img w-full h-full object-cover opacity-80">
+                </div>
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
+                    <span class="px-2 py-1 rounded bg-red-500/20 text-red-400 text-[10px] font-bold tracking-widest uppercase w-fit mb-2">Healthcare</span>
+                    <h3 class="text-lg font-semibold mb-1">Mental Health Awareness Reels</h3>
+                    <p class="text-sm text-stone-400">Series of 15 reels on mental health — 3M+ total impressions</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="py-16 px-6 border-t border-b border-white/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <p class="text-3xl font-bold gradient-text mb-1">50+</p>
+                <p class="text-xs text-stone-500 tracking-widest uppercase">Healthcare Projects</p>
+            </div>
+            <div>
+                <p class="text-3xl font-bold text-white mb-1">200+</p>
+                <p class="text-xs text-stone-500 tracking-widest uppercase">YouTube Videos</p>
+            </div>
+            <div>
+                <p class="text-3xl font-bold text-white mb-1">15+</p>
+                <p class="text-xs text-stone-500 tracking-widest uppercase">Websites Built</p>
+            </div>
+            <div>
+                <p class="text-3xl font-bold text-white mb-1">30+</p>
+                <p class="text-xs text-stone-500 tracking-widest uppercase">Brand Collabs</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-16 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-1">
+                    <a href="index.html" class="text-xl font-bold tracking-tight mb-4 block"><span class="gradient-text">Kannada</span>Creator</a>
+                    <p class="text-sm text-stone-500 leading-relaxed">Karnataka's trusted digital voice in healthcare & tech content creation.</p>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold tracking-widest uppercase text-stone-300 mb-4">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-sm text-stone-500 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="services.html" class="text-sm text-stone-500 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="portfolio.html" class="text-sm text-stone-500 hover:text-white transition-colors">Portfolio</a></li>
+                        <li><a href="contact.html" class="text-sm text-stone-500 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold tracking-widest uppercase text-stone-300 mb-4">Learn</h4>
+                    <ul class="space-y-3">
+                        <li><a href="courses.html" class="text-sm text-stone-500 hover:text-white transition-colors">Free Courses</a></li>
+                        <li><a href="courses.html" class="text-sm text-stone-500 hover:text-white transition-colors">Paid Courses</a></li>
+                        <li><a href="shopping.html" class="text-sm text-stone-500 hover:text-white transition-colors">Shop</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold tracking-widest uppercase text-stone-300 mb-4">Follow Me</h4>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-stone-400 hover:text-white hover:border-white/20 transition-all"><span class="iconify" data-icon="lucide:instagram" data-width="18"></span></a>
+                        <a href="#" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-stone-400 hover:text-white hover:border-white/20 transition-all"><span class="iconify" data-icon="lucide:youtube" data-width="18"></span></a>
+                        <a href="#" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-stone-400 hover:text-white hover:border-white/20 transition-all"><span class="iconify" data-icon="lucide:twitter" data-width="18"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-stone-600">&copy; 2025 KannadaCreator. All rights reserved.</p>
+                <p class="text-xs text-stone-600">Made with ❤️ in Karnataka</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('menuBtn').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('hidden'));
+        document.getElementById('closeMenu').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('hidden'));
+        document.querySelectorAll('#mobileMenu a').forEach(l => l.addEventListener('click', () => document.getElementById('mobileMenu').classList.add('hidden')));
+
+        // Portfolio Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const items = document.querySelectorAll('.portfolio-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+
+                items.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                        item.style.animation = 'reveal 0.5s ease forwards';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
