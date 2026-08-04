@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kannada Content Creator | Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { inter: ['Inter', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        body { background: #0a0a0a; color: #f5f5f4; }
+        ::selection { background: #7f1d1d; color: #fff; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+        @keyframes reveal {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes count-up { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(239,68,68,0.2); }
+            50% { box-shadow: 0 0 40px rgba(239,68,68,0.4); }
+        }
+        .animate-reveal { animation: reveal 0.8s cubic-bezier(0.16,1,0.3,1) forwards; opacity: 0; }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        .delay-6 { animation-delay: 0.6s; }
+        .float-anim { animation: float 3s ease-in-out infinite; }
+        .pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+        .stat-card:hover { transform: translateY(-4px); border-color: rgba(239,68,68,0.3); }
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: #ef4444;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .hero-img-border {
+            background: linear-gradient(135deg, #ef4444, #dc2626, #991b1b);
+            padding: 3px; border-radius: 1rem;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #ef4444, #f87171);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .bg-glow {
+            position: absolute; border-radius: 50%; filter: blur(120px); pointer-events: none;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 h-16 flex items-center px-6 backdrop-blur-xl bg-[#0a0a0a]/80 border-b border-white/5">
+        <div class="max-w-7xl mx-auto w-full flex items-center justify-between">
+            <a href="index.html" class="text-xl font-bold tracking-tight">
+                <span class="gradient-text">Kannada</span>Creator
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="nav-link active text-xs font-semibold tracking-widest uppercase text-stone-300 hover:text-white transition-colors">Home</a>
+                <a href="services.html" class="nav-link text-xs font-semibold tracking-widest uppercase text-stone-400 hover:text-white transition-colors">Services</a>
+                <a href="courses.html" class="nav-link text-xs font-semibold tracking-widest uppercase text-stone-400 hover:text-white transition-colors">Courses</a>
+                <a href="shopping.html" class="nav-link text-xs font-semibold tracking-widest uppercase text-stone-400 hover:text-white transition-colors">Shop</a>
+                <a href="portfolio.html" class="nav-link text-xs font-semibold tracking-widest uppercase text-stone-400 hover:text-white transition-colors">Portfolio</a>
+                <a href="contact.html" class="nav-link text-xs font-semibold tracking-widest uppercase text-stone-400 hover:text-white transition-colors">Contact</a>
+            </div>
+            <button id="menuBtn" class="md:hidden text-stone-300">
+                <span class="iconify" data-icon="lucide:menu" data-width="24"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-40 bg-[#0a0a0a]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-6 hidden">
+        <button id="closeMenu" class="absolute top-5 right-6 text-stone-300">
+            <span class="iconify" data-icon="lucide:x" data-width="24"></span>
+        </button>
+        <a href="index.html" class="text-lg font-semibold text-white">Home</a>
+        <a href="services.html" class="text-lg font-semibold text-stone-400 hover:text-white transition">Services</a>
+        <a href="courses.html" class="text-lg font-semibold text-stone-400 hover:text-white transition">Courses</a>
+        <a href="shopping.html" class="text-lg font-semibold text-stone-400 hover:text-white transition">Shop</a>
+        <a href="portfolio.html" class="text-lg font-semibold text-stone-400 hover:text-white transition">Portfolio</a>
+        <a href="contact.html" class="text-lg font-semibold text-stone-400 hover:text-white transition">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center pt-20 pb-16 px-6 relative overflow-hidden">
+        <!-- Background Glows -->
+        <div class="bg-glow w-[600px] h-[600px] bg-[#7f1d1d]/10 top-20 -left-40"></div>
+        <div class="bg-glow w-[400px] h-[400px] bg-[#991b1b]/5 bottom-20 right-0"></div>
+
+        <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-16 items-center">
+            <!-- Left Content -->
+            <div>
+                <div class="animate-reveal delay-1">
+                    <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-semibold tracking-widest uppercase text-stone-400 mb-8">
+                        <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                        Kannada Content Creator
+                    </span>
+                </div>
+
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tighter mb-6 animate-reveal delay-2">
+                    Creating<br>
+                    <span class="gradient-text">Impactful</span><br>
+                    Content
+                </h1>
+
+                <p class="text-lg font-light leading-relaxed text-stone-400 max-w-md mb-8 animate-reveal delay-3">
+                    Healthcare & Tech Specialist — crafting compelling Kannada content that educates, engages, and converts. 5+ years of digital excellence.
+                </p>
+
+                <div class="flex flex-wrap gap-4 mb-10 animate-reveal delay-4">
+                    <a href="portfolio.html" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-black text-xs font-bold tracking-widest uppercase rounded-sm hover:bg-stone-200 transition-colors">
+                        View Portfolio
+                        <span class="iconify" data-icon="lucide:arrow-right" data-width="14"></span>
+                    </a>
+                    <a href="services.html" class="inline-flex items-center gap-2 px-8 py-4 bg-transparent border border-white/20 text-white text-xs font-bold tracking-widest uppercase rounded-sm hover:bg-white/5 transition-colors">
+                        My Services
+                    </a>
+                </div>
+
+                <!-- Specialist Badges -->
+                <div class="flex flex-wrap gap-3 animate-reveal delay-5">
+                    <span class="px-4 py-2 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-semibold tracking-wider uppercase flex items-center gap-2">
+                        <span class="iconify" data-icon="lucide:heart-pulse" data-width="14"></span>
+                        Healthcare
+                    </span>
+                    <span class="px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold tracking-wider uppercase flex items-center gap-2">
+                        <span class="iconify" data-icon="lucide:cpu" data-width="14"></span>
+                        Technology
+                    </span>
+                </div>
+            </div>
+
+            <!-- Right Image -->
+            <div class="flex justify-center animate-reveal delay-3">
+                <div class="relative">
+                    <div class="hero-img-border pulse-glow">
+                        <img src="https://picsum.photos/seed/kannadacreator/500/600.jpg" alt="Kannada Content Creator" class="w-80 md:w-96 h-auto rounded-2xl object-cover">
+                    </div>
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-4 -left-4 bg-[#171717] border border-white/10 rounded-xl px-5 py-3 float-anim">
+                        <p class="text-2xl font-bold text-white">5+</p>
+                        <p class="text-xs text-stone-500 tracking-wider uppercase">Years Exp.</p>
+                    </div>
+                    <div class="absolute -top-4 -right-4 bg-[#171717] border border-white/10 rounded-xl px-5 py-3 float-anim" style="animation-delay: 1s;">
+                        <p class="text-2xl font-bold gradient-text">100K+</p>
+                        <p class="text-xs text-stone-500 tracking-wider uppercase">Instagram</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-24 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="stat-card bg-stone-900/30 border border-white/5 rounded-xl p-8 text-center transition-all duration-300 hover:shadow-lg">
+                    <p class="text-4xl md:text-5xl font-bold tracking-tighter gradient-text mb-2">1000+</p>
+                    <p class="text-xs font-semibold tracking-widest uppercase text-stone-500">Videos Edited</p>
+                </div>
+                <div class="stat-card bg-stone-900/30 border border-white/5 rounded-xl p-8 text-center transition-all duration-300 hover:shadow-lg">
+                    <p class="text-4xl md:text-5xl font-bold tracking-tighter text-white mb-2">5+</p>
+                    <p class="text-xs font-semibold tracking-widest uppercase text-stone-500">Years Experience</p>
+                </div>
+                <div class="stat-card bg-stone-900/30 border border-white/5 rounded-xl p-8 text-center transition-all duration-300 hover:shadow-lg">
+                    <p class="text-4xl md:text-5xl font-bold tracking-tighter text-white mb-2">100K+</p>
+                    <p class="text-xs font-semibold tracking-widest uppercase text-stone-500">Instagram Family</p>
+                </div>
+                <div class="stat-card bg-stone-900/30 border border-white/5 rounded-xl p-8 text-center transition-all duration-300 hover:shadow-lg">
+                    <p class="text-4xl md:text-5xl font-bold tracking-tighter text-white mb-2">10M+</p>
+                    <p class="text-xs font-semibold tracking-widest uppercase text-stone-500">Total Reach</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Brief -->
+    <section class="py-24 px-6">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <span class="text-xs font-semibold tracking-widest uppercase text-red-500 mb-4 block">About Me</span>
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight leading-tight mb-6">
+                    Karnataka's Trusted<br><span class="gradient-text">Digital Voice</span>
+                </h2>
+                <p class="text-lg font-light leading-relaxed text-stone-400 mb-6">
+                    With over 5 years of dedicated experience in Kannada content creation, I specialize in healthcare awareness and technology explainer content that resonates with millions across Karnataka and beyond.
+                </p>
+                <p class="text-lg font-light leading-relaxed text-stone-400 mb-8">
+                    From script to screen, I handle everything — shooting, editing, scripting, and strategy — ensuring every piece of content delivers maximum impact.
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex items-center gap-3">
+                        <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                        <span class="text-sm text-stone-300">Script Writing</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                        <span class="text-sm text-stone-300">Video Production</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                        <span class="text-sm text-stone-300">Content Strategy</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                        <span class="text-sm text-stone-300">Brand Collaboration</span>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="https://picsum.photos/seed/kannadawork/600/500.jpg" alt="At Work" class="rounded-2xl w-full h-80 object-cover opacity-80">
+                <div class="absolute inset-0 rounded-2xl bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Services Preview -->
+    <section class="py-24 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-xs font-semibold tracking-widest uppercase text-red-500 mb-4 block">What I Offer</span>
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight">Services & Solutions</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <a href="services.html" class="group bg-stone-900/30 border border-white/5 rounded-xl p-8 hover:border-red-500/30 transition-all duration-300 hover:-translate-y-1">
+                    <span class="iconify text-red-500 mb-4" data-icon="lucide:video" data-width="32"></span>
+                    <h3 class="text-xl font-semibold mb-3">Video Production</h3>
+                    <p class="text-sm text-stone-400 leading-relaxed mb-4">End-to-end video creation from concept to final delivery for brands and individuals.</p>
+                    <span class="text-xs font-bold tracking-widest uppercase text-red-500 flex items-center gap-2 group-hover:gap-3 transition-all">
+                        Learn More <span class="iconify" data-icon="lucide:arrow-right" data-width="12"></span>
+                    </span>
+                </a>
+                <a href="services.html" class="group bg-stone-900/30 border border-white/5 rounded-xl p-8 hover:border-red-500/30 transition-all duration-300 hover:-translate-y-1">
+                    <span class="iconify text-red-500 mb-4" data-icon="lucide:scissors" data-width="32"></span>
+                    <h3 class="text-xl font-semibold mb-3">Video Editing</h3>
+                    <p class="text-sm text-stone-400 leading-relaxed mb-4">Professional editing with captivating transitions, graphics, and storytelling techniques.</p>
+                    <span class="text-xs font-bold tracking-widest uppercase text-red-500 flex items-center gap-2 group-hover:gap-3 transition-all">
+                        Learn More <span class="iconify" data-icon="lucide:arrow-right" data-width="12"></span>
+                    </span>
+                </a>
+                <a href="services.html" class="group bg-stone-900/30 border border-white/5 rounded-xl p-8 hover:border-red-500/30 transition-all duration-300 hover:-translate-y-1">
+                    <span class="iconify text-red-500 mb-4" data-icon="lucide:globe" data-width="32"></span>
+                    <h3 class="text-xl font-semibold mb-3">Web Development</h3>
+                    <p class="text-sm text-stone-400 leading-relaxed mb-4">Modern, responsive websites tailored for content creators and businesses.</p>
+                    <span class="text-xs font-bold tracking-widest uppercase text-red-500 flex items-center gap-2 group-hover:gap-3 transition-all">
+                        Learn More <span class="iconify" data-icon="lucide:arrow-right" data-width="12"></span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 px-6">
+        <div class="max-w-4xl mx-auto text-center bg-gradient-to-b from-red-500/5 to-transparent border border-red-500/10 rounded-2xl p-12 md:p-16">
+            <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-6">Ready to Create<br><span class="gradient-text">Something Amazing?</span></h2>
+            <p class="text-lg font-light text-stone-400 mb-8 max-w-xl mx-auto">Let's collaborate and build content that makes a difference in the Kannada digital space.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="contact.html" class="inline-flex items-center gap-2 px-8 py-4 bg-red-500 text-white text-xs font-bold tracking-widest uppercase rounded-sm hover:bg-red-600 transition-colors">
+                    Get In Touch
+                    <span class="iconify" data-icon="lucide:arrow-right" data-width="14"></span>
+                </a>
+                <a href="courses.html" class="inline-flex items-center gap-2 px-8 py-4 bg-transparent border border-white/20 text-white text-xs font-bold tracking-widest uppercase rounded-sm hover:bg-white/5 transition-colors">
+                    Explore Courses
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-16 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-1">
+                    <a href="index.html" class="text-xl font-bold tracking-tight mb-4 block">
+                        <span class="gradient-text">Kannada</span>Creator
+                    </a>
+                    <p class="text-sm text-stone-500 leading-relaxed">Karnataka's trusted digital voice in healthcare & tech content creation.</p>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold tracking-widest uppercase text-stone-300 mb-4">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-sm text-stone-500 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="services.html" class="text-sm text-stone-500 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="portfolio.html" class="text-sm text-stone-500 hover:text-white transition-colors">Portfolio</a></li>
+                        <li><a href="contact.html" class="text-sm text-stone-500 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold tracking-widest uppercase text-stone-300 mb-4">Learn</h4>
+                    <ul class="space-y-3">
+                        <li><a href="courses.html" class="text-sm text-stone-500 hover:text-white transition-colors">Free Courses</a></li>
+                        <li><a href="courses.html" class="text-sm text-stone-500 hover:text-white transition-colors">Paid Courses</a></li>
+                        <li><a href="shopping.html" class="text-sm text-stone-500 hover:text-white transition-colors">Shop</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold tracking-widest uppercase text-stone-300 mb-4">Follow Me</h4>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-stone-400 hover:text-white hover:border-white/20 transition-all">
+                            <span class="iconify" data-icon="lucide:instagram" data-width="18"></span>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-stone-400 hover:text-white hover:border-white/20 transition-all">
+                            <span class="iconify" data-icon="lucide:youtube" data-width="18"></span>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-stone-400 hover:text-white hover:border-white/20 transition-all">
+                            <span class="iconify" data-icon="lucide:twitter" data-width="18"></span>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-stone-400 hover:text-white hover:border-white/20 transition-all">
+                            <span class="iconify" data-icon="lucide:linkedin" data-width="18"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-stone-600">&copy; 2025 KannadaCreator. All rights reserved.</p>
+                <p class="text-xs text-stone-600">Made with ❤️ in Karnataka</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('menuBtn').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.remove('hidden');
+        });
+        document.getElementById('closeMenu').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.add('hidden');
+        });
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
