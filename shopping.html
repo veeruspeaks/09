@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | Kannada Content Creator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <script>tailwind.config = { theme: { extend: { fontFamily: { inter: ['Inter', 'sans-serif'] } } } }</script>
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        body { background: #0a0a0a; color: #f5f5f4; }
+        ::selection { background: #7f1d1d; color: #fff; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+        @keyframes reveal { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-reveal { animation: reveal 0.8s cubic-bezier(0.16,1,0.3,1) forwards; opacity: 0; }
+        .delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.2s; } .delay-3 { animation-delay: 0.3s; } .delay-4 { animation-delay: 0.4s; } .delay-5 { animation-delay: 0.5s; } .delay-6 { animation-delay: 0.6s; }
+        .nav-link { position: relative; }
+        .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #ef4444; transition: width 0.3s ease; }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .gradient-text { background: linear-gradient(135deg, #ef4444, #f87171); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .product-card { transition: all 0.3s ease; }
+        .product-card:hover { transform: translateY(-6px); border-color: rgba(239,68,68,0.3); box-shadow: 0 25px 50px -12px rgba(127,29,29,0.15); }
+        .product-card:hover .product-img { transform: scale(1.08); }
+        .product-img { transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94); }
+        .buy-btn { transition: all 0.2s ease; }
+        .buy-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(239,68,68,0.3); }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 h-16 flex items-center px-6 backdrop-blur-xl bg-[#0a0a0a]/80 border-b border-white/5">
+        <div class="max-w-7xl mx-auto w-full flex items-center justify-between">
+            <a href="index.html" class="text-xl font-bold tracking-tight"><span class="gradient-text">Kannada</span>Creator</a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="nav-link text-xs font-semibold tracking-widest uppercase text-stone-400 hover:text-white transition-colors">Home</a>
+                <a href="services.html" class="nav-link text-xs font-semibold tracking-widest uppercase text-stone-400 hover:text-white transition-colors">Services</a>
+                <a href="courses.html" class="nav-link text-xs font-semibold tracking-widest uppercase text-stone-400 hover:text-white transition-colors">Courses</a>
+                <a href="shopping.html" class="nav-link active text-xs font-semibold tracking-widest uppercase text-stone-300 hover:text-white transition-colors">Shop</a>
+                <a href="portfolio.html" class="nav-link text-xs font-semibold tracking-widest uppercase text-stone-400 hover:text-white transition-colors">Portfolio</a>
+                <a href="contact.html" class="nav-link text-xs font-semibold tracking-widest uppercase text-stone-400 hover:text-white transition-colors">Contact</a>
+            </div>
+            <button id="menuBtn" class="md:hidden text-stone-300"><span class="iconify" data-icon="lucide:menu" data-width="24"></span></button>
+        </div>
+    </nav>
+
+    <div id="mobileMenu" class="fixed inset-0 z-40 bg-[#0a0a0a]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-6 hidden">
+        <button id="closeMenu" class="absolute top-5 right-6 text-stone-300"><span class="iconify" data-icon="lucide:x" data-width="24"></span></button>
+        <a href="index.html" class="text-lg font-semibold text-stone-400 hover:text-white transition">Home</a>
+        <a href="services.html" class="text-lg font-semibold text-stone-400 hover:text-white transition">Services</a>
+        <a href="courses.html" class="text-lg font-semibold text-stone-400 hover:text-white transition">Courses</a>
+        <a href="shopping.html" class="text-lg font-semibold text-white">Shop</a>
+        <a href="portfolio.html" class="text-lg font-semibold text-stone-400 hover:text-white transition">Portfolio</a>
+        <a href="contact.html" class="text-lg font-semibold text-stone-400 hover:text-white transition">Contact</a>
+    </div>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-16 px-6">
+        <div class="max-w-7xl mx-auto">
+            <span class="animate-reveal delay-1 text-xs font-semibold tracking-widest uppercase text-red-500 mb-4 block">Digital Products</span>
+            <h1 class="animate-reveal delay-2 text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[0.9] mb-6">
+                <span class="gradient-text">Shop</span>
+            </h1>
+            <p class="animate-reveal delay-3 text-lg font-light text-stone-400 max-w-2xl leading-relaxed">
+                Premium digital products, templates, presets, and tools designed for Kannada content creators to level up their game.
+            </p>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="py-12 px-6 pb-24">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Product 1 -->
+            <div class="product-card animate-reveal delay-1 bg-stone-900/30 border border-white/5 rounded-2xl overflow-hidden">
+                <div class="overflow-hidden h-56 relative">
+                    <img src="https://picsum.photos/seed/presetpack/500/350.jpg" alt="Product" class="product-img w-full h-full object-cover opacity-80">
+                    <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-red-500/90 text-white text-[10px] font-bold tracking-widest uppercase">Digital</div>
+                </div>
+                <div class="p-6">
+                    <span class="text-[10px] font-bold tracking-widest uppercase text-red-500 mb-2 block">Editing</span>
+                    <h3 class="text-lg font-semibold mb-2">Kannada Content Creator Preset Pack</h3>
+                    <p class="text-sm text-stone-400 leading-relaxed mb-5">50+ color grading presets for Premiere Pro & CapCut — optimized for indoor, outdoor, and healthcare content.</p>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-2xl font-bold text-white">&#8377;499</span>
+                            <span class="text-sm text-stone-500 line-through ml-2">&#8377;999</span>
+                        </div>
+                        <a href="#" class="buy-btn inline-flex items-center gap-2 px-5 py-2.5 bg-red-500 text-white text-xs font-bold tracking-widest uppercase rounded-sm">
+                            Buy Now
+                            <span class="iconify" data-icon="lucide:shopping-cart" data-width="14"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card animate-reveal delay-2 bg-stone-900/30 border border-white/5 rounded-2xl overflow-hidden">
+                <div class="overflow-hidden h-56 relative">
+                    <img src="https://picsum.photos/seed/captionebook/500/350.jpg" alt="Product" class="product-img w-full h-full object-cover opacity-80">
+                    <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-orange-500/90 text-white text-[10px] font-bold tracking-widest uppercase">E-Book</div>
+                </div>
+                <div class="p-6">
+                    <span class="text-[10px] font-bold tracking-widest uppercase text-red-500 mb-2 block">E-Book</span>
+                    <h3 class="text-lg font-semibold mb-2">200 Viral Caption Templates (Kannada)</h3>
+                    <p class="text-sm text-stone-400 leading-relaxed mb-5">Ready-to-use Kannada captions for healthcare, tech, lifestyle, and motivational content. Copy, paste, go viral.</p>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-2xl font-bold text-white">&#8377;299</span>
+                            <span class="text-sm text-stone-500 line-through ml-2">&#8377;599</span>
+                        </div>
+                        <a href="#" class="buy-btn inline-flex items-center gap-2 px-5 py-2.5 bg-red-500 text-white text-xs font-bold tracking-widest uppercase rounded-sm">
+                            Buy Now
+                            <span class="iconify" data-icon="lucide:shopping-cart" data-width="14"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card animate-reveal delay-3 bg-stone-900/30 border border-white/5 rounded-2xl overflow-hidden">
+                <div class="overflow-hidden h-56 relative">
+                    <img src="https://picsum.photos/seed/hashtagguide/500/350.jpg" alt="Product" class="product-img w-full h-full object-cover opacity-80">
+                    <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-blue-500/90 text-white text-[10px] font-bold tracking-widest uppercase">Guide</div>
+                </div>
+                <div class="p-6">
+                    <span class="text-[10px] font-bold tracking-widest uppercase text-red-500 mb-2 block">Strategy</span>
+                    <h3 class="text-lg font-semibold mb-2">Kannada Hashtag Bible 2025</h3>
+                    <p class="text-sm text-stone-400 leading-relaxed mb-5">500+ curated Kannada hashtags organized by niche, reach potential, and competition level. Updated monthly.</p>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-2xl font-bold text-white">&#8377;199</span>
+                            <span class="text-sm text-stone-500 line-through ml-2">&#8377;399</span>
+                        </div>
+                        <a href="#" class="buy-btn inline-flex items-center gap-2 px-5 py-2.5 bg-red-500 text-white text-xs font-bold tracking-widest uppercase rounded-sm">
+                            Buy Now
+                            <span class="iconify" data-icon="lucide:shopping-cart" data-width="14"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card animate-reveal delay-4 bg-stone-900/30 border border-white/5 rounded-2xl overflow-hidden">
+                <div class="overflow-hidden h-56 relative">
+                    <img src="https://picsum.photos/seed/thumbnailtemp/500/350.jpg" alt="Product" class="product-img w-full h-full object-cover opacity-80">
+                    <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-purple-500/90 text-white text-[10px] font-bold tracking-widest uppercase">Templates</div>
+                </div>
+                <div class="p-6">
+                    <span class="text-[10px] font-bold tracking-widest uppercase text-red-500 mb-2 block">Design</span>
+                    <h3 class="text-lg font-semibold mb-2">YouTube Thumbnail Templates Pack</h3>
+                    <p class="text-sm text-stone-400 leading-relaxed mb-5">30+ editable Canva thumbnail templates designed specifically for Kannada YouTube channels. High CTR guaranteed.</p>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-2xl font-bold text-white">&#8377;399</span>
+                            <span class="text-sm text-stone-500 line-through ml-2">&#8377;799</span>
+                        </div>
+                        <a href="#" class="buy-btn inline-flex items-center gap-2 px-5 py-2.5 bg-red-500 text-white text-xs font-bold tracking-widest uppercase rounded-sm">
+                            Buy Now
+                            <span class="iconify" data-icon="lucide:shopping-cart" data-width="14"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card animate-reveal delay-5 bg-stone-900/30 border border-white/5 rounded-2xl overflow-hidden">
+                <div class="overflow-hidden h-56 relative">
+                    <img src="https://picsum.photos/seed/scriptbundle/500/350.jpg" alt="Product" class="product-img w-full h-full object-cover opacity-80">
+                    <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-green-500/90 text-white text-[10px] font-bold tracking-widest uppercase">Bundle</div>
+                </div>
+                <div class="p-6">
+                    <span class="text-[10px] font-bold tracking-widest uppercase text-red-500 mb-2 block">Scripts</span>
+                    <h3 class="text-lg font-semibold mb-2">50 Readymade Reel Scripts (Kannada)</h3>
+                    <p class="text-sm text-stone-400 leading-relaxed mb-5">Proven reel scripts for healthcare awareness, tech reviews, and motivational content. Just record and post.</p>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-2xl font-bold text-white">&#8377;599</span>
+                            <span class="text-sm text-stone-500 line-through ml-2">&#8377;1,199</span>
+                        </div>
+                        <a href="#" class="buy-btn inline-flex items-center gap-2 px-5 py-2.5 bg-red-500 text-white text-xs font-bold tracking-widest uppercase rounded-sm">
+                            Buy Now
+                            <span class="iconify" data-icon="lucide:shopping-cart" data-width="14"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card animate-reveal delay-6 bg-stone-900/30 border border-white/5 rounded-2xl overflow-hidden">
+                <div class="overflow-hidden h-56 relative">
+                    <img src="https://picsum.photos/seed/merchhoodie/500/350.jpg" alt="Product" class="product-img w-full h-full object-cover opacity-80">
+                    <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-yellow-500/90 text-black text-[10px] font-bold tracking-widest uppercase">Merch</div>
+                </div>
+                <div class="p-6">
+                    <span class="text-[10px] font-bold tracking-widest uppercase text-red-500 mb-2 block">Merchandise</span>
+                    <h3 class="text-lg font-semibold mb-2">Kannada Creator Official Hoodie</h3>
+                    <p class="text-sm text-stone-400 leading-relaxed mb-5">Premium quality black hoodie with embroidered Kannada Creator logo. Limited edition — only 100 pieces available.</p>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-2xl font-bold text-white">&#8377;1,299</span>
+                            <span class="text-sm text-stone-500 line-through ml-2">&#8377;1,999</span>
+                        </div>
+                        <a href="#" class="buy-btn inline-flex items-center gap-2 px-5 py-2.5 bg-red-500 text-white text-xs font-bold tracking-widest uppercase rounded-sm">
+                            Buy Now
+                            <span class="iconify" data-icon="lucide:shopping-cart" data-width="14"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-16 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-1">
+                    <a href="index.html" class="text-xl font-bold tracking-tight mb-4 block"><span class="gradient-text">Kannada</span>Creator</a>
+                    <p class="text-sm text-stone-500 leading-relaxed">Karnataka's trusted digital voice in healthcare & tech content creation.</p>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold tracking-widest uppercase text-stone-300 mb-4">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-sm text-stone-500 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="services.html" class="text-sm text-stone-500 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="portfolio.html" class="text-sm text-stone-500 hover:text-white transition-colors">Portfolio</a></li>
+                        <li><a href="contact.html" class="text-sm text-stone-500 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold tracking-widest uppercase text-stone-300 mb-4">Learn</h4>
+                    <ul class="space-y-3">
+                        <li><a href="courses.html" class="text-sm text-stone-500 hover:text-white transition-colors">Free Courses</a></li>
+                        <li><a href="courses.html" class="text-sm text-stone-500 hover:text-white transition-colors">Paid Courses</a></li>
+                        <li><a href="shopping.html" class="text-sm text-stone-500 hover:text-white transition-colors">Shop</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold tracking-widest uppercase text-stone-300 mb-4">Follow Me</h4>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-stone-400 hover:text-white hover:border-white/20 transition-all"><span class="iconify" data-icon="lucide:instagram" data-width="18"></span></a>
+                        <a href="#" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-stone-400 hover:text-white hover:border-white/20 transition-all"><span class="iconify" data-icon="lucide:youtube" data-width="18"></span></a>
+                        <a href="#" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-stone-400 hover:text-white hover:border-white/20 transition-all"><span class="iconify" data-icon="lucide:twitter" data-width="18"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-stone-600">&copy; 2025 KannadaCreator. All rights reserved.</p>
+                <p class="text-xs text-stone-600">Made with ❤️ in Karnataka</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('menuBtn').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('hidden'));
+        document.getElementById('closeMenu').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('hidden'));
+        document.querySelectorAll('#mobileMenu a').forEach(l => l.addEventListener('click', () => document.getElementById('mobileMenu').classList.add('hidden')));
+    </script>
+</body>
+</html>
